@@ -3,8 +3,9 @@ dotenv.config()
 
 import { initDatabase } from './db/init.js'
 import { app } from './app.js'
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 3000
 await initDatabase()
-app.listen(PORT)
 
-console.info(`Express server running on http://localhost:${PORT}`)
+app.listen(PORT, '0.0.0.0', () => {
+  console.info(`Express server running on port ${PORT}`)
+})
